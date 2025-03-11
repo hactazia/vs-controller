@@ -17,16 +17,7 @@ local constants_position = {
     speed = 10,
     min_angular_speed = ang.deg.to_rad(45),
     speed_limit = function(x, a)
-        if x <= 0 then
-            return 1
-        end
-
-        if x >= a then
-            return 0
-        end
-
-
-        return -1 / (a ^ a) * (x ^ a) + 1
+        return (x <= 0 and 1) or (x >= a and 0) or (-1 / (a ^ a) * (x ^ a) + 1)
     end
 }
 

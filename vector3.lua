@@ -27,13 +27,14 @@ function vec3.from(x, y, z)
     return v
 end
 
+vec3.zero = vec3.from(0, 0, 0)
 vec3.up = vec3.from(0, 1, 0)
-vec3.down = vec3.from(0, -1, 0)
-vec3.left = vec3.from(-1, 0, 0)
 vec3.right = vec3.from(1, 0, 0)
 vec3.forward = vec3.from(0, 0, 1)
-vec3.back = vec3.from(0, 0, -1)
-vec3.zero = vec3.from(0, 0, 0)
+
+vec3.down = vec3.up.inverse()
+vec3.left = vec3.right.inverse()
+vec3.back = vec3.forward.inverse()
 
 function vec3.from_table(t)
   return vec3.from(t.x, t.y, t.z)
